@@ -5,16 +5,19 @@ N = int(input().strip())
 i = 1
 j = 1
 ctt = 0
+tmp = 1
 
 while i <= j:
-    a = sum([i for i in range(i,j+1)])
-    if a == N:
+    if tmp == N:
         ctt += 1
         i += 1
-    elif a > N:
+        tmp -= (i-1)
+    elif tmp > N:
         i += 1
-    elif a < N:
+        tmp -= (i-1)
+    elif tmp < N:
         j += 1
+        tmp += j
     
 print(ctt)
 
