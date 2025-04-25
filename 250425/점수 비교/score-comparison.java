@@ -2,7 +2,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         // Please write your code here.
-        Scanner scanner = new Scanner(System.in)
+        Scanner scanner = new Scanner(System.in);
         int Amath = scanner.nextInt();
         int Aeng = scanner.nextInt();
         int Bmath = scanner.nextInt();
