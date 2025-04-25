@@ -7,14 +7,14 @@ public class Main {
 
         if(Y % 4 == 0 ){
             if(Y % 100 == 0 && Y % 400 != 0){
-                System.out.println("평년");
+                System.out.println("false");
             }
             else{
-                System.out.println("윤년");
+                System.out.println("true");
             }
         }
         else{
-            System.out.println("평년");
+            System.out.println("false");
         }
     }
 }
