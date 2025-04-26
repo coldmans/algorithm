@@ -1,0 +1,15 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        // Please write your code here.
+        Scanner scanner = new Scanner(System.in);
+        int N = scanner.nextInt();
+        int tmp = 1;
+        for(int i = 1; i <= N; i++){
+            for(int j = 0; j < i; j++){
+                System.out.print(tmp++ + " ");
+            }
+            System.out.println();
+        }
+    }
+}
