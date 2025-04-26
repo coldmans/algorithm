@@ -8,6 +8,9 @@ public class Main {
         if(a.length() > b.length()){
             System.out.println(a + " " + a.length());
         }
+        else if(a.length() == b.length()){
+            System.out.println("same");
+        }
         else{
             System.out.println(b + " " + b.length());
         }
