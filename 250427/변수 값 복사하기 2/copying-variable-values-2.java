@@ -5,6 +5,6 @@ public class Main {
         int b = 6;
         int c = 7;
         c = a = b;
-        System.out.println(a + " " + b + " " + c)
+        System.out.println(a + " " + b + " " + c);
     }
 }
