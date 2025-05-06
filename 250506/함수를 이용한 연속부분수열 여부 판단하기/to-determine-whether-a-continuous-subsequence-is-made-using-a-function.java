@@ -14,18 +14,19 @@ public class Main {
         }
         int j = 0;
         int i = ready;
-        int ch = 1;
         while(i < x.length && j < y.length){
             if(x[i] != y[j]){
                 System.out.println("No");
-                ch = 0;
-                break;
+                return;
             }
             i += 1;
             j += 1;
         }
-        if(ch == 1){
+        if(j == y.length){
             System.out.println("Yes");
+        }
+        else{
+            System.out.println("No");
         }
     }
     public static void main(String[] args) {
