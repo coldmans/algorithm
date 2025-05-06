@@ -10,7 +10,7 @@ public class Main {
             if(text.charAt(i) == pattern.charAt(0) && tmp == false){
                 int k = i;
                 int j = 0;
-                while(k < text.length() || j < pattern.length()){
+                while(k < text.length() && j < pattern.length()){
                     if(text.charAt(k) != pattern.charAt(j)){
                         break;
                     }
