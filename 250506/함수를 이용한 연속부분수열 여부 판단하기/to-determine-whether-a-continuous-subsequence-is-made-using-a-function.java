@@ -10,6 +10,7 @@ public class Main {
         }
         if(ready == -1){
             System.out.println("No");
+            return;
         }
         int j = 0;
         int i = ready;
