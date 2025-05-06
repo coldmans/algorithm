@@ -11,8 +11,8 @@ public class Main {
         int tmp = 0;
         while(M != 0){
             tmp += arr[M];
-            if(M % 2 == 1) M -= 1;
-            else if(M % 2 == 0) M /= 2;
+            if (M % 2 == 1) M -= 1;
+            else if (M % 2 == 0) M /= 2;
         }
         System.out.println(tmp);
     }
