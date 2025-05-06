@@ -1,33 +1,35 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 public class Main {
     static void check(int[] x, int[] y){
-        int ready = -1;
+        ArrayList<Integer> ready = new ArrayList<>();
         for(int i = 0; i < x.length; i++){
             if(x[i] == y[0]){
-                ready = i;
-                break;
+                ready.add(i);
             }
         }
-        if(ready == -1){
+        if(ready.isEmpty()){
             System.out.println("No");
             return;
         }
-        int j = 0;
-        int i = ready;
-        while(i < x.length && j < y.length){
-            if(x[i] != y[j]){
-                System.out.println("No");
+        for(int q = 0; q < ready.size(); q++){
+            int i = ready.get(q);
+            int j = 0;
+            while(i < x.length && j < y.length){
+                if(x[i] != y[j]){
+                    break;
+                }
+                i += 1;
+                j += 1;
+            }
+            if(j == y.length){
+                System.out.println("Yes");
                 return;
             }
-            i += 1;
-            j += 1;
         }
-        if(j == y.length){
-            System.out.println("Yes");
-        }
-        else{
-            System.out.println("No");
-        }
+        System.out.println("No");
+        
+
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
