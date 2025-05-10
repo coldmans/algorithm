@@ -26,11 +26,14 @@ public class Main {
             infos[i] = new info(date[i], day, weather);
         }
         java.util.Arrays.sort(date);
-        for(int i =0 ; i < n; i++){
-            if (infos[i].weather.equals("Rain")){
-                System.out.println(infos[i].date + " " + infos[i].dayOfWeek + " " + infos[i].weather);
-                break;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (infos[j].date.equals(date[i]) && infos[j].weather.equals("Rain")) {
+                    System.out.println(infos[j].date + " " + infos[j].dayOfWeek + " " + infos[j].weather);
+                    return;
+                }
             }
-        }
+}
+
     }
 }
