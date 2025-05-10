@@ -15,6 +15,9 @@ public class Main {
         Arrays.sort(words);
         for(int i = 0; i < n; i++){
             if(t.charAt(0) == words[i].charAt(0)){
+                if(t.length() > words[i].length()){
+                    continue;
+                }
                 boolean isTrue = true;
                 for(int j = 0; j < t.length(); j++){
                     if(t.charAt(j) != words[i].charAt(j)){
