@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class bomb{
+class bomb{
     String code;
     char color;
     int second;
