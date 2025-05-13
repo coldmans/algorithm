@@ -15,6 +15,9 @@ public class Main {
         if(m1 == 1 || m1 == 3 || m1 == 5 || m1 == 7 || m1 == 8 || m1 == 10 || m1 == 12){
             days = 31 - d1;
         }
+        else if(m1 == 2){
+            days = 28 - d1;
+        }
         else{
             days = 30 - d1;
         }
