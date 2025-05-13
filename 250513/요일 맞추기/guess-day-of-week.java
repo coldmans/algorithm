@@ -9,7 +9,7 @@ public class Main {
         // Please write your code here.
         int days = 0;
         int d = 1;
-        while(d+1 != m1){
+        while(d+1 <= m1){
             if(d == 1 || d == 3 || d== 5 || d ==7 || d == 8 || d == 10 || d == 12){
                 days += 31;
             }
@@ -22,18 +22,18 @@ public class Main {
             d += 1;
         }
         if(d == 1 || d == 3 || d== 5 || d ==7 || d == 8 || d == 10 || d == 12){
-            days += 31 - d1;
+            days += d1;
         }
         else if(d == 2){
-            days += 28 - d1;
+            days += d1;
         }
         else{
-            days += 30 - d1;
+            days += d1;
         }
 
         int days2 = 0;
         int dd = 1;
-        while(dd+1 != m2){
+        while(dd+1 <= m2){
             if(dd == 1 || dd == 3 || dd== 5 || dd ==7 || dd == 8 || dd == 10 || dd == 12){
                 days2 += 31;
             }
@@ -46,13 +46,13 @@ public class Main {
             dd += 1;
         }
         if(dd == 1 || dd == 3 || dd== 5 || dd ==7 || dd == 8 || dd == 10 || dd == 12){
-            days2 += 31 - d2;
+            days2 += d2;
         }
         else if(dd == 2){
-            days2 += 28 - d2;
+            days2 += d2;
         }
         else{
-            days2 += 30 - d2;
+            days2 += d2;
         }
 
         while(days < days2){
