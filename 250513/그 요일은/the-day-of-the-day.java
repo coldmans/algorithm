@@ -1,89 +1,42 @@
-import java.util.*;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class Main {
-    static int[] monthDays = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-
-    static String[] fullYear = {
-        // 2024년 1월 1일은 월요일 (Mon)
-        "Mon","Tue","Wed","Thu","Fri","Sat","Sun", // 1월 1~7
-        "Mon","Tue","Wed","Thu","Fri","Sat","Sun",
-        "Mon","Tue","Wed","Thu","Fri","Sat","Sun",
-        "Mon","Tue","Wed","Thu","Fri","Sat","Sun",
-        "Mon","Tue","Wed","Thu", // 1월 (31일)
-        "Fri","Sat","Sun","Mon","Tue","Wed","Thu",
-        "Fri","Sat","Sun","Mon","Tue","Wed","Thu",
-        "Fri","Sat","Sun","Mon","Tue","Wed","Thu",
-        "Fri","Sat","Sun", // 2월 (29일)
-        "Mon","Tue","Wed","Thu","Fri","Sat","Sun",
-        "Mon","Tue","Wed","Thu","Fri","Sat","Sun",
-        "Mon","Tue","Wed","Thu","Fri","Sat","Sun",
-        "Mon","Tue","Wed","Thu","Fri","Sat","Sun",
-        "Mon","Tue","Wed", // 3월 (31일)
-        "Thu","Fri","Sat","Sun","Mon","Tue","Wed",
-        "Thu","Fri","Sat","Sun","Mon","Tue","Wed",
-        "Thu","Fri","Sat","Sun","Mon","Tue","Wed",
-        "Thu","Fri","Sat", // 4월 (30일)
-        "Sun","Mon","Tue","Wed","Thu","Fri","Sat",
-        "Sun","Mon","Tue","Wed","Thu","Fri","Sat",
-        "Sun","Mon","Tue","Wed","Thu","Fri","Sat",
-        "Sun","Mon","Tue","Wed","Thu","Fri","Sat",
-        "Sun","Mon","Tue", // 5월 (31일)
-        "Wed","Thu","Fri","Sat","Sun","Mon","Tue",
-        "Wed","Thu","Fri","Sat","Sun","Mon","Tue",
-        "Wed","Thu","Fri","Sat","Sun","Mon","Tue",
-        "Wed","Thu","Fri","Sat","Sun","Mon", // 6월 (30일)
-        "Tue","Wed","Thu","Fri","Sat","Sun","Mon",
-        "Tue","Wed","Thu","Fri","Sat","Sun","Mon",
-        "Tue","Wed","Thu","Fri","Sat","Sun","Mon",
-        "Tue","Wed","Thu","Fri","Sat","Sun","Mon", // 7월 (31일)
-        "Tue","Wed","Thu","Fri","Sat","Sun","Mon",
-        "Tue","Wed","Thu","Fri","Sat","Sun","Mon",
-        "Tue","Wed","Thu","Fri","Sat","Sun","Mon",
-        "Tue","Wed","Thu", // 8월 (31일)
-        "Fri","Sat","Sun","Mon","Tue","Wed","Thu",
-        "Fri","Sat","Sun","Mon","Tue","Wed","Thu",
-        "Fri","Sat","Sun","Mon","Tue","Wed","Thu",
-        "Fri","Sat","Sun","Mon","Tue","Wed", // 9월 (30일)
-        "Thu","Fri","Sat","Sun","Mon","Tue","Wed",
-        "Thu","Fri","Sat","Sun","Mon","Tue","Wed",
-        "Thu","Fri","Sat","Sun","Mon","Tue","Wed",
-        "Thu","Fri","Sat","Sun","Mon","Tue", // 10월 (31일)
-        "Wed","Thu","Fri","Sat","Sun","Mon","Tue",
-        "Wed","Thu","Fri","Sat","Sun","Mon","Tue",
-        "Wed","Thu","Fri","Sat","Sun","Mon","Tue",
-        "Wed","Thu","Fri","Sat", // 11월 (30일)
-        "Sun","Mon","Tue","Wed","Thu","Fri","Sat",
-        "Sun","Mon","Tue","Wed","Thu","Fri","Sat",
-        "Sun","Mon","Tue","Wed","Thu","Fri","Sat",
-        "Sun","Mon","Tue","Wed","Thu" // 12월 (31일)
-    };
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int m1 = sc.nextInt();
-        int d1 = sc.nextInt();
-        int m2 = sc.nextInt();
-        int d2 = sc.nextInt();
-        String target = sc.next();
+        int m1 = sc.nextInt();    // 시작 월
+        int d1 = sc.nextInt();    // 시작 일
+        int m2 = sc.nextInt();    // 끝 월
+        int d2 = sc.nextInt();    // 끝 일
+        String target = sc.next(); // "Mon","Tue","Wed","Thu","Fri","Sat","Sun"
 
-        int start = getIndex(m1, d1);
-        int end = getIndex(m2, d2);
+        // 문자열 → DayOfWeek 매핑
+        Map<String, DayOfWeek> dayMap = new HashMap<>();
+        dayMap.put("Mon", DayOfWeek.MONDAY);
+        dayMap.put("Tue", DayOfWeek.TUESDAY);
+        dayMap.put("Wed", DayOfWeek.WEDNESDAY);
+        dayMap.put("Thu", DayOfWeek.THURSDAY);
+        dayMap.put("Fri", DayOfWeek.FRIDAY);
+        dayMap.put("Sat", DayOfWeek.SATURDAY);
+        dayMap.put("Sun", DayOfWeek.SUNDAY);
+
+        DayOfWeek targetDay = dayMap.get(target);
+
+        // 2024년은 윤년이므로 2월 29일까지 자동 처리
+        LocalDate start = LocalDate.of(2024, m1, d1);
+        LocalDate end   = LocalDate.of(2024, m2, d2);
 
         int count = 0;
-        for (int i = start; i <= end; i++) {
-            if (fullYear[i].equals(target)) {
+        // 시작일에서 끝일까지 하루씩 증가시키며 요일 비교
+        for (LocalDate date = start; !date.isAfter(end); date = date.plusDays(1)) {
+            if (date.getDayOfWeek() == targetDay) {
                 count++;
             }
         }
 
         System.out.println(count);
-    }
-
-    static int getIndex(int month, int day) {
-        int idx = 0;
-        for (int i = 0; i < month - 1; i++) {
-            idx += monthDays[i];
-        }
-        return idx + day - 1;
     }
 }
