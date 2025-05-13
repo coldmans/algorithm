@@ -21,15 +21,9 @@ public class Main {
             }
             d += 1;
         }
-        if(d == 1 || d == 3 || d== 5 || d ==7 || d == 8 || d == 10 || d == 12){
-            days += d1;
-        }
-        else if(d == 2){
-            days += d1;
-        }
-        else{
-            days += d1;
-        }
+
+        days += d1;
+        
 
         int days2 = 0;
         int dd = 1;
@@ -45,20 +39,13 @@ public class Main {
             }
             dd += 1;
         }
-        if(dd == 1 || dd == 3 || dd== 5 || dd ==7 || dd == 8 || dd == 10 || dd == 12){
-            days2 += d2;
-        }
-        else if(dd == 2){
-            days2 += d2;
-        }
-        else{
-            days2 += d2;
-        }
+        days2 += d2;
 
-        while(days < days2){
-            days2 -= 7;
+        while(days > days2){
+            days2 += 7;
         }
-        int tmp = days - days2;
+        int tmp = days2 - days;
+        
         if(tmp % 7 == 0){
             System.out.println("Mon");
         }
