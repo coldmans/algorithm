@@ -55,10 +55,10 @@ public class Main {
             days2 += 30 - d2;
         }
 
-        int tmp = days - days2;
-        while(tmp < 0){
-            tmp += 7;
+        while(days < days2){
+            days2 -= 7;
         }
+        int tmp = days - days2;
         if(tmp % 7 == 0){
             System.out.println("Mon");
         }
