@@ -6,7 +6,10 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String n = scanner.next();
         int num = 0;
-
+        if(n == "0"){
+            System.out.println(0);
+            System.exit(0);
+        }
         for(int i = 0; i < 5; i++)
             num = num * 2 + Integer.parseInt(String.valueOf(n.charAt(i)));
         
