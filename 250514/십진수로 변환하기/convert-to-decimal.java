@@ -9,6 +9,10 @@ public class Main {
             System.out.println(0);
             System.exit(0);
         }
+        else if(n.equals("1")){
+            System.out.println(1);
+            System.exit(0);
+        }
         for(int i = 0; i < 5; i++)
             num = num * 2 + Integer.parseInt(String.valueOf(n.charAt(i)));
         
