@@ -2,11 +2,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int[] binary = new int[]{1, 1, 1, 0, 1};
         Scanner scanner = new Scanner(System.in);
         String n = scanner.next();
         int num = 0;
-        if(n == "0"){
+        if(n.equals("0")){
             System.out.println(0);
             System.exit(0);
         }
