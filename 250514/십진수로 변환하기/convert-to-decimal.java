@@ -13,7 +13,7 @@ public class Main {
             System.out.println(1);
             System.exit(0);
         }
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < n.length(); i++)
             num = num * 2 + Integer.parseInt(String.valueOf(n.charAt(i)));
         
         System.out.print(num);
