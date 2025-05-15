@@ -27,12 +27,13 @@ public class Main {
         }
         // Please write your code here.
 
-        int [][]check = new int[200000][2];
+        int [][]check = new int[200000][4];
         for(int i = 0; i < N; i++){
             for(int j = x1[i]; j <= x2[i]; j++){
                 if(color[i] == 1){
                     check[j][0] += 1;
                     check[j][1] = 1; // 마지막 흰색
+                    check[j][3] += 1;
                 }
                 else if(color[i] == 2){
                     check[j][0] += 1;
@@ -53,7 +54,22 @@ public class Main {
                 }
             }
             else if(check[j][0] >= 4){
-                g += 1;
+                if(check[j][0] == 4){
+                    if(check[j][3] == 3 || check[j][3] == 1){
+                        if(check[j][1] == 1){
+                            w += 1;
+                        }
+                        else{
+                            b += 1;
+                        }
+                    }
+                    else{
+                        g += 1;
+                    }
+                }
+                else{
+                    g += 1;
+                }
             }
         }
         System.out.println(w + " " + b +  " " + g);
