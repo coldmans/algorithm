@@ -1,54 +1,59 @@
 import java.util.Scanner;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
-public class Main {
+public class Main {    
+    public static final int OFFSET = 1000;
+    public static final int MAX_R = 2000;
+    public static final int MAX_N = 100;
+    
+    public static int n;
+    public static int[] x1 = new int[MAX_N];
+    public static int[] x2 = new int[MAX_N];
+    
+    public static int[] checked = new int[MAX_R + 1];
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        Map<Integer, Integer> visit = new HashMap<>();
-        int point = 0;
-        for (int i = 0; i < N; i++) {
-            int x = sc.nextInt();
-            char dir = sc.next().charAt(0);
-            // Please write your code here.
-            if(dir == 'L'){
-                for(int j = point; j >= point-x; j--){
-                    visit.put(j, visit.getOrDefault(j,0) + 1);
-                }
-                point -= x;
+        // 입력
+        n = sc.nextInt();
+        
+        // 현재 위치
+        int cur = 0;
+        
+        for(int i = 0; i < n; i++) {
+            int distance = sc.nextInt();
+            char direction = sc.next().charAt(0);
+            
+            if(direction == 'L') {
+                // 왼쪽으로 이동할 경우 : cur - distance ~ cur까지 경로 이동
+                x1[i] = cur - distance;
+                x2[i] = cur;
+                cur -= distance;
             }
-            else if(dir == 'R'){
-                for(int j = point; j <= point+x; j++){
-                    visit.put(j, visit.getOrDefault(j,0) + 1);
-                }
-                point += x;
+            else {
+                // 오른쪽으로 이동할 경우 : cur ~ cur + distance까지 경로 이동
+                x1[i] = cur;
+                x2[i] = cur + distance;
+                cur += distance;
             }
+            
+            // OFFSET을 더해줍니다.
+            x1[i] += OFFSET;
+            x2[i] += OFFSET;
         }
         
-        List<Integer> twice = new ArrayList<>();
-        for(Map.Entry<Integer, Integer> e : visit.entrySet()){
-            if(e.getValue() >= 2) twice.add(e.getKey());
-        }
-        Collections.sort(twice);
-
-        int total = 0;
-        if(!twice.isEmpty()){
-            int start = twice.get(0), end = start;
-            for(int i = 1; i < twice.size(); i++){
-                int cur = twice.get(i);
-                if(cur == end + 1){
-                    end = cur;
-                } else {
-                    total += (end - start);
-                    start = end = cur;
-                }
-            }
-            total += (end - start);
-        }
-        System.out.println(total);
+        // 구간을 칠해줍니다.
+        // 구간 단위로 진행하는 문제이므로
+        // x2[i]에 등호가 들어가지 않음에 유의합니다.
+        for(int i = 0; i < n; i++)
+            for(int j = x1[i]; j < x2[i]; j++)
+                checked[j]++;
+        
+        // 2번 이상 지나간 영역의 크기를 구합니다.
+        int cnt = 0;
+        for(int i = 0; i <= MAX_R; i++)
+            if(checked[i] >= 2)
+                cnt++;
+        
+        System.out.print(cnt);
     }
 }
