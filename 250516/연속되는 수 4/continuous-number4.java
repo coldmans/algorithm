@@ -17,6 +17,7 @@ public class Main {
             }
             tmp++;
         }
+        maxi = Math.max(maxi, tmp);
         System.out.println(maxi);
     }
 }
