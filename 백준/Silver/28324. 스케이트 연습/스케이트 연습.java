@@ -16,7 +16,7 @@ public class Main {
                 real[i] = max[i];
             }
         }
-        int res = 0;
+        long res = 0;
 
         for(int i = 0; i < N; i++){
             res += real[i];
