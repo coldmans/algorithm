@@ -17,7 +17,6 @@ public class Main {
         }
 
         int[] parent = new int[a];
-        int[] position = new int[a];
 
         Arrays.fill(parent, -1);
 
@@ -35,7 +34,6 @@ public class Main {
                 else{
                     list.set(tmp, arr[i]);
                 }
-                position[i] = tmp;
 
                 if(tmp > 0){
                     parent[i] = lastIndex[tmp - 1];
