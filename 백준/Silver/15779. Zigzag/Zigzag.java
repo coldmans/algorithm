@@ -22,24 +22,31 @@ public class Main {
         else{
             maxi = 2;
         }
-        while(k <= n){
-            int j = k;
-            boolean fails = false;
-            while(j <= n) {
-                for (int l = j-k+1; l < j-1; l++) {
-                    if ((arr[l - 1] <= arr[l] && arr[l] <= arr[l + 1]) || (arr[l - 1] >= arr[l] && arr[l] >= arr[l + 1])) {
-                        fails = true;
-                    }
+
+        int i = 0;
+        int j = i+2;
+        while(j < n){
+            boolean fa = false;
+
+            for(int y = i+1; y < j; y++){
+                if((arr[y-1] <= arr[y] && arr[y] <= arr[y+1]) || (arr[y-1] >= arr[y] && arr[y] >= arr[y+1])){
+                    fa = true;
                 }
-                j += 1;
-                if(!fails){
-                    maxi = k;
-                    break;
-                }
-                fails = false;
             }
-            k += 1;
+
+            if(!fa){
+
+                maxi = j-i + 1;
+                j += 1;
+            }
+            else{
+
+                i += 1;
+                j += 1;
+
+            }
         }
+
         System.out.println(maxi);
 
     }
