@@ -1,51 +1,49 @@
 import java.util.*;
 
 class Solution {
-    static int[] one = {1,2,3,4,5};
-    static int[] two = {2,1,2,3,2,4,2,5};
-    static int[] three = {3,3,1,1,2,2,4,4,5,5};
-    
     public int[] solution(int[] answers) {
-
-        int[] good = new int[3];
-        
-        int onep = 0;
-        int twop = 0;
-        int threep = 0;
-        
+        int[] supo1 = {1,2,3,4,5};
+        int[] supo2 = {2,1,2,3,2,4,2,5};
+        int[] supo3 = {3,3,1,1,2,2,4,4,5,5};
+        int []who = new int[3];
+        int a = 0;
+        int b = 0;
+        int c = 0;
         for(int i = 0; i < answers.length; i++){
-            if(answers[i] == one[onep]){
-                good[0] += 1;
+            if(answers[i] == supo1[a]){
+                who[0] += 1;
             }
-                onep += 1;
-                if(onep == one.length){
-                    onep = 0;
-                }
-            if(answers[i] == two[twop]){
-                good[1] += 1;
+            if(answers[i] == supo2[b]){
+                who[1] += 1;
             }
-                            twop += 1;
-                if(twop == two.length){
-                    twop = 0;
-                }
-            if(answers[i] == three[threep]){
-                good[2] += 1;
+            if(answers[i] == supo3[c]){
+                who[2] += 1;
             }
-                            threep += 1;
-                if(threep == three.length){
-                    threep = 0;
-                }
+            a += 1;
+            b += 1;
+            c += 1;
+            
+            if(a == supo1.length){
+                a = 0;
+            }
+            if(b == supo2.length){
+                b = 0;
+            }
+            if(c == supo3.length){
+                c = 0;
+            }
         }
         int max = 0;
-        for(int i = 0; i < good.length; i++){
-            max = Math.max(good[i], max);
+        for(int i = 0; i < 3; i++){
+            max = Math.max(max, who[i]);
         }
         List<Integer> list = new ArrayList<>();
-        for(int i = 0; i < good.length; i++){
-            if(good[i] == max){
+        
+        for(int i = 0; i < 3; i++){
+            if(who[i] == max){
                 list.add(i+1);
             }
         }
-        return list.stream().mapToInt(Integer::intValue).toArray();
+        return list.stream().mapToInt(i -> i).toArray();
     }
 }
