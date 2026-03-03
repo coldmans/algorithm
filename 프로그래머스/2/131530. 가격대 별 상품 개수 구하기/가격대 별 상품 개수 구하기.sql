@@ -1,0 +1,5 @@
+SELECT (price div 10000) * 10000 as price_group,
+count(*) as products
+FROM PRODUCT
+group by price_group
+order by price_group asc;
