@@ -1,20 +1,21 @@
 import java.io.*;
+import java.math.BigInteger;
 import java.util.*;
 
 public class Main {
 
-
-    public static void main(String[] args) throws IOException {
+    static StringTokenizer st;
+    public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int T = Integer.parseInt(br.readLine());
+        List<Integer> list = new ArrayList<>();
+        for(int i = 0; i < T; i++){
+            list.add(Integer.parseInt(br.readLine()));
+        }
+        Collections.sort(list);
+        for(int n : list){
+            System.out.println(n);
+        }
 
-        int n = Integer.parseInt(br.readLine());
-        int []arr = new int[n];
-        for(int i = 0; i < n; i++){
-            arr[i] = Integer.parseInt(br.readLine());
-        }
-        Arrays.sort(arr);
-        for (int i : arr) {
-            System.out.println(i);
-        }
     }
 }
