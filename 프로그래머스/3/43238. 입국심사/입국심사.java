@@ -2,27 +2,31 @@ import java.util.*;
 
 class Solution {
     public long solution(int n, int[] times) {
-        long answer = 0;
-        long i = 1;
-        Arrays.sort(times);
-        long j = (long) times[0] * n;
+        long max = 0;
+        for(int i = 0; i < times.length; i++){
+            max = Math.max(max, times[i]);
+        }
+        long mt = n * max;
+        long start = 0;
+        long answer = 999999999;
         
-        
-        while(i <= j){
-            long time = (i + j) / 2;
+        while(start < mt){
             long tmp = 0;
-            for(int k = 0; k < times.length; k++){
-                tmp += time / times[k];
-            }
-            if(tmp < n){
-                i = time + 1;
+            long mid = (start + mt) / 2;
+            for(int i = 0; i < times.length; i++){
+                tmp += mid / times[i];
+                if(tmp >= n){
+                    break;
+                }
             }
             if(tmp >= n){
-                answer = time;
-                j = time - 1;
+                answer = mid;
+                mt = mid;
+            }
+            else{
+                start = mid + 1;
             }
         }
-        
         return answer;
     }
 }
